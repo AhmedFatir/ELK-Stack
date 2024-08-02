@@ -19,18 +19,18 @@ Serving as the visualization layer of the stack, Kibana enables users to explore
 ```bash
 apt install curl
 
-sudo apt install docker.io
+apt install docker.io
 
 curl -O -J -L https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-linux-x86_64
 
 chmod +x docker-compose-linux-x86_64
 
-sudo cp ./docker-compose-linux-x86_64 /usr/bin/docker-compose
+cp ./docker-compose-linux-x86_64 /usr/bin/docker-compose
 ```
 
 ### if you already have docker and docker-compose installed on your machine
 ```bash
-git clone git@github.com:AhmedFatir/ELK-Stack.git
+git clone https://github.com/AhmedFatir/ELK-Stack.git
 
 cd ./ELK-Stack && make
 
