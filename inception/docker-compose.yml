@@ -13,7 +13,7 @@ networks:
 services:
 #mariadb
   mariadb:
-    image: mariadb:afatir
+    image: mariadb:user
     container_name: mariadb
     build: ./mariadb
     volumes:
@@ -25,7 +25,7 @@ services:
     restart: always
 #nginx
   nginx:
-    image: nginx:afatir
+    image: nginx:user
     container_name: nginx
     build: ./nginx
     ports:
@@ -42,7 +42,7 @@ services:
     restart: always
 #wordpress
   wordpress:
-    image: wordpress:afatir
+    image: wordpress:user
     container_name: wordpress
     build: ./wordpress
     depends_on:
