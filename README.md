@@ -2,7 +2,7 @@
 # ELK-Stack
 
 ## Project Overview
-Log Management Elasticsearch, Logstash, and Kibana using Docker.
+Log Management System Using Elasticsearch, Logstash, and Kibana With Docker.
 ## For the full explanation of the project, you can check out my [Medium blog](https://medium.com/@afatir.ahmedfatir/elk-stack-deep-dive-complete-guide-using-docker-fbf31aa842a6) for the complete details.
 
 ## Key Features
