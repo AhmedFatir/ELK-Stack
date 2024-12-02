@@ -9,26 +9,26 @@ echo "alias zshi='sh /install.sh'" >> ~/.zshrc
 
 #---------------------------------------------------mariadb ping---------------------------------------------------#
 
-ping_mariadb_container() {
-    nc -zv mariadb 3306 > /dev/null
-    return $?
-}
-start_time=$(date +%s)
-end_time=$((start_time + 20))
-while [ $(date +%s) -lt $end_time ]; do
-    ping_mariadb_container
-    if [ $? -eq 0 ]; then
-        echo "[========MARIADB IS UP AND RUNNING========]"
-        break
-    else
-        echo "[========WAITING FOR MARIADB TO START...========]"
-        sleep 1
-    fi
-done
+# ping_mariadb_container() {
+#     nc -zv mariadb 3306 > /dev/null
+#     return $?
+# }
+# start_time=$(date +%s)
+# end_time=$((start_time + 20))
+# while [ $(date +%s) -lt $end_time ]; do
+#     ping_mariadb_container
+#     if [ $? -eq 0 ]; then
+#         echo "[========MARIADB IS UP AND RUNNING========]"
+#         break
+#     else
+#         echo "[========WAITING FOR MARIADB TO START...========]"
+#         sleep 1
+#     fi
+# done
 
-if [ $(date +%s) -ge $end_time ]; then
-    echo "[========MARIADB IS NOT RESPONDING========]"
-fi
+# if [ $(date +%s) -ge $end_time ]; then
+#     echo "[========MARIADB IS NOT RESPONDING========]"
+# fi
 
 #---------------------------------------------------wp installation---------------------------------------------------#
 

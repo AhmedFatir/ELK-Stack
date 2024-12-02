@@ -2,7 +2,9 @@
 # ELK-Stack
 
 ## Project Overview
-Elasticsearch, Logstash, and Kibana using Docker.
+Log Management Elasticsearch, Logstash, and Kibana using Docker.
+## For the full explanation of the project, you can check out my [Medium blog](https://medium.com/@afatir.ahmedfatir/elk-stack-deep-dive-complete-guide-using-docker-fbf31aa842a6) for the complete details.
+
 ## Key Features
 ### Elasticsearch
 This is the core of the stack, acting as a distributed, RESTful search and analytics engine capable of storing and searching large amounts of data rapidly. It functions like a high-powered database specifically tailored for search and analytics, enabling users to query logs in milliseconds and facilitating immediate identification of issues and trends.
@@ -44,12 +46,10 @@ cd ./ELK-Stack && make
 rsync -a ~/Library/Containers/com.docker.docker ~/goinfre/DockerData
 
 # Rename the original directory as a backup, just in case you need to revert(optional).
-mv ~/Library/Containers/com.docker.docker ~/Library/Containers/com.docker.docker.backup∏∏π◊
+mv ~/Library/Containers/com.docker.docker ~/Library/Containers/com.docker.docker.backup
 
 # Create a symbolic link from the new location back to the original location.
 ln -s ~/goinfre/DockerData/com.docker.docker ~/Library/Containers/com.docker.docker
 
 # Open Docker > Preferences > Resources > File Sharing > Add ~/goinfre to Shared Paths.
 ```
-
-## For the full explanation of the project, you can check out my [Medium blog](https://medium.com/@afatir.ahmedfatir/elk-stack-deep-dive-complete-guide-using-docker-fbf31aa842a6) for the complete details.

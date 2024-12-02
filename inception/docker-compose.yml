@@ -13,7 +13,7 @@ networks:
 services:
 #mariadb
   mariadb:
-    image: mariadb:user
+    image: mariadb
     container_name: mariadb
     build: ./mariadb
     volumes:
@@ -23,9 +23,15 @@ services:
     networks :
       - inception
     restart: always
+    healthcheck:
+      test: ["CMD", "nc", "-zv", "localhost", "3306"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
 #nginx
   nginx:
-    image: nginx:user
+    image: nginx
     container_name: nginx
     build: ./nginx
     ports:
@@ -42,11 +48,12 @@ services:
     restart: always
 #wordpress
   wordpress:
-    image: wordpress:user
+    image: wordpress
     container_name: wordpress
     build: ./wordpress
     depends_on:
-      - mariadb
+      mariadb:
+        condition: service_healthy
     volumes:
       - wordpress:/var/www/wordpress
     env_file :

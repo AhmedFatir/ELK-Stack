@@ -45,11 +45,11 @@ chown -R root:root config/certs
 find config/certs -type d -exec chmod 750 {} \;
 find config/certs -type f -exec chmod 640 {} \;
 
-echo "Waiting for Elasticsearch availability"
+echo "Waiting for Elasticsearch availability..."
 until curl -s --cacert config/certs/ca/ca.crt https://elasticsearch:9200 \
   | grep -q "missing authentication credentials"; do sleep 5; done
 
-echo "stting Kiabana password"
+echo "stting Kiabana password..."
 until curl -s \
   -X POST https://elasticsearch:9200/_security/user/kibana_system/_password \
   --cacert config/certs/ca/ca.crt \
@@ -58,14 +58,17 @@ until curl -s \
   -d "{\"password\":\"${KIBANA_PASSWORD}\"}" \
   | grep -q "^{}"; do sleep 5; done
 
-echo "Importing kibana Dashboard"
+echo "Waiting for Kibana availability..."
+until curl -s -k https://kibana:5601/api/status | grep -q '"status":{"overall":{"level":"available"'; do sleep 5; done
+
+echo "Importing kibana Dashboard..."
 until curl -s -k \
     -X POST "https://kibana:5601/api/saved_objects/_import" \
-    -u "elastic:${ELASTIC_PASSWORD}" \
+    -u "elastic:${KIBANA_PASSWORD}" \
     -H "kbn-xsrf: true" \
     -H "Content-Type: multipart/form-data" \
     --form file=@/usr/share/elasticsearch/config/dashboard.ndjson \
-    | grep -q '"success":true'; do sleep 5; echo "Waiting for import..."; done;
+    | grep -q '"success":true'; do sleep 5; done
 
 echo "All done!, removing the setup container"
 CONTAINER_ID=$(hostname)
