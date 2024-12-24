@@ -5,6 +5,8 @@
 Log Management System Using Elasticsearch, Logstash, and Kibana With Docker.
 ## For the full explanation of the project, you can check out my [Medium blog](https://medium.com/@afatir.ahmedfatir/elk-stack-deep-dive-complete-guide-using-docker-fbf31aa842a6) for the complete details.
 
+![](https://github.com/AhmedFatir/AhmedFatir/blob/master/images/ELK_Stack.png)
+
 ## Key Features
 ### Elasticsearch
 This is the core of the stack, acting as a distributed, RESTful search and analytics engine capable of storing and searching large amounts of data rapidly. It functions like a high-powered database specifically tailored for search and analytics, enabling users to query logs in milliseconds and facilitating immediate identification of issues and trends.
